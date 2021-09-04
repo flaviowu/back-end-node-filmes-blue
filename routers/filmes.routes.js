@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
       res.status(200).send(filme);
     })
     .catch((err) => {
-      res.status(400).send("Algo tdeu errado na requisição, tente novamente");
+      res.status(400).send("Algo deu errado na requisição, tente novamente");
       console.error(err);
     });
 });

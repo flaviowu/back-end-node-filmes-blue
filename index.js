@@ -2,8 +2,8 @@ const express = require("express");
 const Conn = require("./models/conn/conn");
 
 const app = express();
-// Conn("localhost", 27017, "filmes");
-Conn()
+Conn("localhost", 27017, "filmes");
+
 
 app.use(express.json());
 
