@@ -3,8 +3,16 @@ if (process.env.NODE_ENV !== "production") {
 }
 const express = require("express");
 const Conn = require("./models/conn/conn");
+const cors = require("cors")
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 const app = express();
+app.use(express.json());
+app.use(cors(corsOptions))
 
 const db_url = process.env.DB_URL;
 const db_user = process.env.DB_USER;
@@ -13,9 +21,7 @@ const db_data = process.env.DB_DATA;
 
 Conn(db_url, db_user, db_pass, db_data);
 
-app.use(express.json());
-
-const port = 3000;
+const port = 3005;
 
 const filme = require("./routers/filmes.routes");
 app.use("/filmes", filme);
